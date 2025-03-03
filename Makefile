@@ -9,7 +9,7 @@ image:
 	docker run --rm -v $$PWD:$(BR_PATH) $(ORG)/$(REPOSITORY):$(TAG) sh /home/devops/buildroot/scripts/build_image.sh clean_build
 
 run_container:
-	docker run --rm -it -v $$PWD:$(BR_PATH) $(ORG)/$(REPOSITORY):$(TAG)
+	docker run --rm -it -v $$PWD:$(BR_PATH) $(ORG)/$(REPOSITORY):$(TAG) /bin/bash
 
 build_container:
 	$(MAKE) -C devops build
