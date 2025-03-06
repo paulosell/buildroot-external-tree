@@ -24,9 +24,14 @@ make run_container
 This will launch a bash shell inside the container.
 
 ### Building the RPI5 Image
-To build the image from inside the Docker container, run:
+To run a clean build from inside the Docker container, run:
 ```sh
-make image
+make image_clean_build
+```
+
+To run a dirty build in case you have to re-build your image and don't want to rebuild all packages and dependencies:
+```sh
+make image_dirty_build
 ```
  
 ## Makefile Commands
@@ -34,7 +39,8 @@ make image
 |---------|-------------|
 | `make build_container` | Builds the Docker image and tags it with the latest commit hash and `latest` tag. |
 | `make run_container` | Runs an interactive shell inside the container. |
-| `make image` | Builds RPI5 image|
+| `make image_clean_build` | Clean build of RPI5 image|
+| `make image_dirty_build` | Re-build of RPI5 image|
 
 ## License
 This project is licensed under the MIT License.
