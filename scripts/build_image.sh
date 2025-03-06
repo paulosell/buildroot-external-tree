@@ -1,7 +1,17 @@
+#!/bin/bash
 
 usage() {
   echo "Usage: $0 {clean_build}"
 
+}
+
+dirty_build() {
+  cd buildroot/output || return 1
+  if [ ! -f Makefile ]; then
+    echo "ERROR: run make image_clean_build"
+    return 1
+  fi
+  make
 }
 
 clean_build() {
@@ -16,6 +26,9 @@ clean_build() {
 case "$1" in
   clean_build)
     clean_build
+    ;;
+  dirty_build)
+    dirty_build
     ;;
   *)
     usage
