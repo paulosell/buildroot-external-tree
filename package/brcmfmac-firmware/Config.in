@@ -1,0 +1,5 @@
+config BR2_PACKAGE_BRCMFMAC_FIRMWARE
+  bool "BRCMFMAC FIrmware"
+  default n
+  help
+    Download BRCFMAC firmware from linux kernel source

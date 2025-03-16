@@ -1,0 +1,42 @@
+#!/bin/sh
+
+install_wlan_modules() {
+  modprobe brcmutil || return 1
+  modprobe brcmfmac || return 1
+  sleep 5
+  return 0
+}
+
+uninstall_wlan_modules() {
+  rmmod brcmfmac || return 1
+  rmmod brcmutil || return 1
+  return 0
+}
+
+case "$1" in
+  start)
+    printf "Installing wlan modules... "
+    install_wlan_modules
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    ;;
+  stop)
+    printf "Uninstalling wlan modules... "
+    uninstall_wlan_modules
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    ;;
+  restart)
+    printf "Uninstalling wlan modules... "
+    uninstall_wlan_modules
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    
+    printf "Installing wlan modules... "
+    install_wlan_modules
+    [ $? -eq 0 ] && echo "OK" || echo "FAIL"
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit $?

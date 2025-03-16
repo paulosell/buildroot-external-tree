@@ -17,3 +17,6 @@ run_container:
 
 build_container:
 	$(MAKE) -C devops build
+
+burn_sd_card:
+	sh scripts/burn_sd.sh
