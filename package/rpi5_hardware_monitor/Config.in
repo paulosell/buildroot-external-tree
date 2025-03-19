@@ -1,0 +1,5 @@
+config BR2_PACKAGE_RPI5_HARDWARE_MONITOR
+  bool "RPI5 Hardware Monitor"
+  default n
+  help
+    Use custom RPI5 hardware monitor to monitor CPU temperature

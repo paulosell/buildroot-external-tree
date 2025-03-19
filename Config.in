@@ -1,3 +1,4 @@
 menu "Raspberry Pi 5 Customizations"
 source "$BR2_EXTERNAL_BUILDROOT_PFS_PATH/package/brcmfmac-firmware/Config.in"
+source "$BR2_EXTERNAL_BUILDROOT_PFS_PATH/package/rpi5_hardware_monitor/Config.in"
 endmenu
