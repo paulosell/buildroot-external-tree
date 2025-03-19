@@ -2,8 +2,6 @@ BRCMFMAC_FIRMWARE_VERSION := 20250311
 BRCMFMAC_FIRMWARE_SOURCE := linux-firmware-$(BRCMFMAC_FIRMWARE_VERSION).tar.gz
 BRCMFMAC_FIRMWARE_SITE := https://web.git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot
 
-BRCMFMAC_FIRMWARE_TARGET := YES
-
 define BRCMFMAC_FIRMWARE_INSTALL_TARGET_CMDS
   $(INSTALL) -D -m 0644 $(@D)/cypress/cyfmac43455-sdio.bin $(TARGET_DIR)/lib/firmware/brcm/brcmfmac43455-sdio.bin
 
