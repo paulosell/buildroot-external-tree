@@ -431,7 +431,7 @@ dpi_16bit_gpio2:        &rp1_dpi_16bit_gpio2        { };
 	};
 
 	fan: cooling_fan {
-		status = "disabled";
+		status = "okay";
 		compatible = "pwm-fan";
 		#cooling-cells = <2>;
 		cooling-min-state = <0>;
@@ -536,7 +536,7 @@ spi10_cs_pins: &spi10_cs_gpio1 {};
 };
 
 &rp1_pwm1 {
-	status = "disabled";
+	status = "okay";
 	pinctrl-0 = <&rp1_pwm1_gpio45>;
 	pinctrl-names = "default";
 };
