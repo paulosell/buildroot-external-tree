@@ -1,0 +1,59 @@
+#!/bin/sh
+
+DAEMON="monitor"
+PIDFILE="/var/run/$DAEMON.pid"
+
+do_pwm_config_by_driver() {
+  modprobe pwm_fan || return 1
+  sleep 1
+  rmmod pwm_fan || return 1
+
+  return 0
+}
+
+start_hw_monitor() {
+  printf "Starting %s: " "$DAEMON"
+  do_pwm_config_by_driver || return 1
+  
+  start-stop-daemon --start --pidfile "$PIDFILE" \
+          --exec "/usr/bin/$DAEMON"
+  status=$?
+  if [ "$status" -eq 0 ]; then
+    echo "OK"
+  else
+    echo "FAIL"
+  fi
+  return "$status"
+}
+
+stop_hw_monitor(){
+  printf "Stopping %s: " "$DAEMON"
+  start-stop-daemon --stop --pidfile "$PIDFILE" \
+          --exec "/usr/bin/$DAEMON"
+  status=$?
+  if [ "$status" -eq 0 ]; then
+    echo "OK"
+  else
+    echo "FAIL"
+  fi
+
+  while [ -f "$PIDFILE" ]; do
+          sleep 0.1
+  done
+  return "$status"
+}
+
+case "$1" in
+  start)
+    start_hw_monitor
+    ;;
+  stop)
+    stop_hw_monitor
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit $?
