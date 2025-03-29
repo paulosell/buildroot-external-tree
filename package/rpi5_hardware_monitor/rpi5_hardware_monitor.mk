@@ -1,4 +1,4 @@
-RPI5_HARDWARE_MONITOR_VERSION := 1.0.1
+RPI5_HARDWARE_MONITOR_VERSION := 2.0.0
 RPI5_HARDWARE_MONITOR_SITE := https://github.com/paulosell/rpi-hardware-monitor.git
 RPI5_HARDWARE_MONITOR_SITE_METHOD := git
 
@@ -7,7 +7,7 @@ define RPI5_HARDWARE_MONITOR_BUILD_CMDS
 endef
 
 define RPI5_HARDWARE_MONITOR_INSTALL_TARGET_CMDS
-  $(INSTALL) -D -m 0755 $(@D)/src/rpi_hardware_monitor $(TARGET_DIR)/usr/bin
+  $(INSTALL) -D -m 0755 $(@D)/src/monitor $(TARGET_DIR)/usr/bin
 endef
 
 $(eval $(generic-package))
