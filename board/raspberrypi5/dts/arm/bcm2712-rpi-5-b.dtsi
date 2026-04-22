@@ -676,6 +676,17 @@ spi10_cs_pins: &spi10_cs_gpio1 {};
 	};
 };
 
+&i2c1 {
+
+	status="okay";
+
+	ds3231: rtc@68 {
+		compatible = "maxim,ds3231";
+		reg = <0x68>;
+	};
+
+};
+
 &rp1_gpio {
 	gpio-line-names =
 		"ID_SDA", // GPIO0
